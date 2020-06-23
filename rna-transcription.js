@@ -9,20 +9,25 @@
 
 export const toRna = (RNA) => {
   let rnaArray = RNA.split("")
+  const TRANSCRIPTION = { A: "U", T: "A", C: "G", G: "C", U: "T" }
   for (let index = 0; index < rnaArray.length; index++) {
-    if (rnaArray[index] == "G" || rnaArray[index] == "C") {
-      if (rnaArray[index] == "G") {
-        rnaArray.splice([index], 1, "C")
-      } else if (rnaArray[index] == "C") {
-        rnaArray.splice([index], 1, "G")
+    if (TRANSCRIPTION[rnaArray[index]] || TRANSCRIPTION[rnaArray[index]]) {
+      if (TRANSCRIPTION[rnaArray[index]]) {
+        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
+      } else if (rnaArray[index] == TRANSCRIPTION[rnaArray[index]]) {
+        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
       }
-    } else if (rnaArray[index] == "T" || rnaArray[index] == "A") {
-      if (rnaArray[index] == "T") {
-        rnaArray.splice([index], 1, "A")
-      } else if (rnaArray[index] == "A") {
-        rnaArray.splice([index], 1, "U")
+    } else if (
+      TRANSCRIPTION[rnaArray[index]] ||
+      TRANSCRIPTION[rnaArray[index]]
+    ) {
+      if (TRANSCRIPTION[rnaArray[index]]) {
+        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
+      } else if (rnaArray[index] == TRANSCRIPTION[rnaArray[index]]) {
+        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
       }
     }
   }
+
   return rnaArray.join("")
 }
