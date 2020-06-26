@@ -7,28 +7,14 @@
 // * `T` -> `A`
 // * `A` -> `U`
 
-export const toRna = (RNA) => {
-  let rnaArray = RNA.split("")
+export const toRna = (DNA) => {
+  const dnaArray = [...DNA]
+
   const TRANSCRIPTION = { A: "U", T: "A", C: "G", G: "C", U: "T" }
 
-  for (let index = 0; index < rnaArray.length; index++) {
-    if (TRANSCRIPTION[rnaArray[index]] || TRANSCRIPTION[rnaArray[index]]) {
-      if (TRANSCRIPTION[rnaArray[index]]) {
-        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
-      } else if (rnaArray[index] == TRANSCRIPTION[rnaArray[index]]) {
-        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
-      }
-    } else if (
-      TRANSCRIPTION[rnaArray[index]] ||
-      TRANSCRIPTION[rnaArray[index]]
-    ) {
-      if (TRANSCRIPTION[rnaArray[index]]) {
-        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
-      } else if (rnaArray[index] == TRANSCRIPTION[rnaArray[index]]) {
-        rnaArray.splice([index], 1, TRANSCRIPTION[rnaArray[index]])
-      }
-    }
-  }
+  const rnaArray = dnaArray.map((nucleotide) =>
+    nucleotide(TRANSCRIPTION[rnaArray])
+  )
 
   return rnaArray.join("")
 }
