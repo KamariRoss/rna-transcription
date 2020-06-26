@@ -12,9 +12,6 @@ export const toRna = (DNA) => {
 
   const TRANSCRIPTION = { A: "U", T: "A", C: "G", G: "C", U: "T" }
 
-  const rnaArray = dnaArray.map((nucleotide) =>
-    nucleotide(TRANSCRIPTION[rnaArray])
-  )
-
+  const rnaArray = dnaArray.map((nucleotide) => TRANSCRIPTION[nucleotide])
   return rnaArray.join("")
 }
